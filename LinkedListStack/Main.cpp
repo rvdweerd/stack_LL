@@ -161,14 +161,36 @@ void test8()
 	}
 }
 
+
 int main()
 {
-	_CrtSetReportMode( _CRT_WARN,_CRTDBG_MODE_FILE );
-	_CrtSetReportFile( _CRT_WARN,_CRTDBG_FILE_STDERR );
-	_CrtSetReportMode( _CRT_ERROR,_CRTDBG_MODE_FILE );
-	_CrtSetReportFile( _CRT_ERROR,_CRTDBG_FILE_STDERR );
-	_CrtSetReportMode( _CRT_ASSERT,_CRTDBG_MODE_FILE );
-	_CrtSetReportFile( _CRT_ASSERT,_CRTDBG_FILE_STDERR );
+	_CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_FILE);
+	_CrtSetReportFile(_CRT_WARN, _CRTDBG_FILE_STDERR);
+	_CrtSetReportMode(_CRT_ERROR, _CRTDBG_MODE_FILE);
+	_CrtSetReportFile(_CRT_ERROR, _CRTDBG_FILE_STDERR);
+	_CrtSetReportMode(_CRT_ASSERT, _CRTDBG_MODE_FILE);
+	_CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDERR);
+
+	
+	//	Stack s;
+//		s.Push(3);
+	//	s.Push(4);
+	
+	//Stack s2;
+	//s2.Push(1);
+	//s2 = s;
+	
+	//int count = s.Size();
+	
+	//int p = s.Pop();
+	//count = s.Size();
+	//p = s.Pop();
+	//count = s.Size();
+
+	//Stack s2 = s;
+	//s2.Pop();
+	
+
 	
 	test1();
 	test2();
@@ -180,6 +202,8 @@ int main()
 	test8();
 
 	_CrtDumpMemoryLeaks();
+	
+	
 	while( !_kbhit() );
 	return 0;
 }
