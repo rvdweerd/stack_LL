@@ -4,6 +4,7 @@
 #include <conio.h>
 #include "ChiliString.h"
 #include "Stack.h"
+#include "Stack2.h"
 
 void test1()
 {
@@ -164,34 +165,42 @@ void test8()
 
 int main()
 {
+	/*
 	_CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_FILE);
 	_CrtSetReportFile(_CRT_WARN, _CRTDBG_FILE_STDERR);
 	_CrtSetReportMode(_CRT_ERROR, _CRTDBG_MODE_FILE);
 	_CrtSetReportFile(_CRT_ERROR, _CRTDBG_FILE_STDERR);
 	_CrtSetReportMode(_CRT_ASSERT, _CRTDBG_MODE_FILE);
 	_CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDERR);
+	*/
+	
+	Stack2 s;
+	int count = 0;
+	s.Push(3);
+	count = s.Size();
+	s.Push(4);
+	count = s.Size();
+	s.Pop();
+	count = s.Size();
+	s.Pop();
+	count = s.Size();
 
+	/*
+	Stack s2;
+	s2.Push(1);
+	s2 = s;
 	
-	//	Stack s;
-//		s.Push(3);
-	//	s.Push(4);
+	int count = s.Size();
 	
-	//Stack s2;
-	//s2.Push(1);
-	//s2 = s;
-	
-	//int count = s.Size();
-	
-	//int p = s.Pop();
-	//count = s.Size();
-	//p = s.Pop();
-	//count = s.Size();
+	int p = s.Pop();
+	count = s.Size();
+	p = s.Pop();
+	count = s.Size();
 
-	//Stack s2 = s;
-	//s2.Pop();
-	
+	s2.Pop();
+	*/
 
-	
+	/*
 	test1();
 	test2();
 	test3();
@@ -202,7 +211,7 @@ int main()
 	test8();
 
 	_CrtDumpMemoryLeaks();
-	
+	*/
 	
 	while( !_kbhit() );
 	return 0;
