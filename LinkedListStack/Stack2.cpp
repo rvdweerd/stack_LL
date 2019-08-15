@@ -15,11 +15,11 @@ Stack2::Stack2(Element* ptr)
 
 Stack2::~Stack2()
 {
-	if (!Empty())
-	{
+	//if (!Empty())
+	//{
 		delete pTop;
 		pTop = nullptr;
-	}
+	//}
 }
 
 Stack2::Stack2(const Stack2& source)
@@ -36,23 +36,28 @@ Stack2& Stack2::operator=(const Stack2& source)
 			delete pTop;
 			this->pTop = nullptr;
 		}
+		
 		if (source.Empty())
 		{
 			this->pTop = nullptr;
 		}
 		else
 		{
+			/* OPTION ONE
 			Element* pOrigin = source.pTop;
-			this->pTop = new Element(pOrigin->val, nullptr);
+			this->pTop = new Element(pOrigin->GetVal(), nullptr);
 			Element* pTarget = this->pTop;
 						
-			while (pOrigin->pNext != nullptr)
+			while (pOrigin->GetNext() != nullptr)
 			{
-				pOrigin = pOrigin->pNext;
-				pTarget->pNext = new Element(pOrigin->val, nullptr);
-				pTarget = pTarget->pNext;
+				pOrigin = pOrigin->GetNext();
+				pTarget->SetNext( new Element(pOrigin->GetVal(), nullptr) );
+				pTarget = pTarget->GetNext();
 
 			}
+			*/
+			this->pTop = new Element( *source.pTop );
+
 		}
 	}
 	return *this;
@@ -71,15 +76,21 @@ int Stack2::Pop()
 	}
 	else
 	{
-		int val = pTop->val;
-		Element* p_tmp = pTop;
-		pTop = pTop->pNext;
+		const int valTemp = pTop->GetVal();
+		Element* pOldTop = pTop;
+		pTop = pTop->Disconnect();
+		delete pOldTop;
+
+		/* ALTERNATIVE WITHOUT DISCONNECT FUNCTION
+		Element* pOldTop = pTop;
+		pTop = pTop->GetNext();
 		
-		p_tmp->pNext = nullptr;
-		delete p_tmp;
-		p_tmp = nullptr; //Necessary?
-		
-		return val;
+		pOldTop->pNext = nullptr;
+		delete pOldTop;
+		pOldTop = nullptr; //Necessary?
+		*/
+
+		return valTemp;
 	}
 }
 
@@ -103,16 +114,4 @@ bool Stack2::Empty() const
 void Stack2::Print() const
 {
 	chili::print("test");
-}
-
-int Stack2::Element::Count()
-{
-	if (pNext == nullptr)
-	{
-		return 1;
-	}
-	else
-	{
-		return pNext->Count() + 1;
-	}
 }
