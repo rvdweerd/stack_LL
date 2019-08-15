@@ -15,17 +15,10 @@ Stack2::Stack2(Element* ptr)
 
 Stack2::~Stack2()
 {
-	//while (!Empty())
-	//{
-	//	Pop();
-	//}
-	while (!Empty())
+	if (!Empty())
 	{
-		Element* p_tmp = pTop;
-		pTop = pTop->pNext;
-		p_tmp->pNext = nullptr;
-		delete p_tmp;
-		p_tmp = nullptr;
+		delete pTop;
+		pTop = nullptr;
 	}
 }
 
@@ -40,9 +33,7 @@ Stack2& Stack2::operator=(const Stack2& source)
 	{
 		if (!this->Empty())
 		{
-			{
-				Stack2 s_tmp(this->pTop);
-			}
+			delete pTop;
 			this->pTop = nullptr;
 		}
 		if (source.Empty())
@@ -51,15 +42,15 @@ Stack2& Stack2::operator=(const Stack2& source)
 		}
 		else
 		{
-			Element* pSource_tmp = source.pTop;
-			this->pTop = new Element(pSource_tmp->val, nullptr);
-			Element* pThis_tmp = this->pTop;
+			Element* pOrigin = source.pTop;
+			this->pTop = new Element(pOrigin->val, nullptr);
+			Element* pTarget = this->pTop;
 						
-			while (pSource_tmp->pNext != nullptr)
+			while (pOrigin->pNext != nullptr)
 			{
-				pSource_tmp = pSource_tmp->pNext;
-				pThis_tmp->pNext = new Element(pSource_tmp->val, nullptr);
-				pThis_tmp = pThis_tmp->pNext;
+				pOrigin = pOrigin->pNext;
+				pTarget->pNext = new Element(pOrigin->val, nullptr);
+				pTarget = pTarget->pNext;
 
 			}
 		}
@@ -83,9 +74,11 @@ int Stack2::Pop()
 		int val = pTop->val;
 		Element* p_tmp = pTop;
 		pTop = pTop->pNext;
-		//p_tmp->pNext = nullptr; //Necessary?
+		
+		p_tmp->pNext = nullptr;
 		delete p_tmp;
 		p_tmp = nullptr; //Necessary?
+		
 		return val;
 	}
 }

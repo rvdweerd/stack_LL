@@ -186,53 +186,23 @@ void test9()
 
 int main()
 {
-	
 	_CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_FILE);
 	_CrtSetReportFile(_CRT_WARN, _CRTDBG_FILE_STDERR);
 	_CrtSetReportMode(_CRT_ERROR, _CRTDBG_MODE_FILE);
 	_CrtSetReportFile(_CRT_ERROR, _CRTDBG_FILE_STDERR);
 	_CrtSetReportMode(_CRT_ASSERT, _CRTDBG_MODE_FILE);
 	_CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDERR);
-	/*
-	
-	{
-
-		Stack2 s;
-		s.Push(3);
-		s.Push(4);
-		Stack2 s2;
-		s2.Push(1);
-		s2 = s;
-	}
-
-	/*
-
-	Stack s2;
-	s2.Push(1);
-	s2 = s;
-	
-	int count = s.Size();
-	
-	int p = s.Pop();
-	count = s.Size();
-	p = s.Pop();
-	count = s.Size();
-
-	s2.Pop();
-	*/
-
-	
+		
 	test1();
 	test2();
 	test3();
 	test4();
 	test5();
-	
 	test6();
 	test7();
 	test8();
 	test9();
-
+	
 	_CrtDumpMemoryLeaks();
 	
 	

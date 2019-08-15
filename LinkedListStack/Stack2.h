@@ -12,6 +12,14 @@ public:
 			pNext(ptr_in)
 		{
 		}
+		~Element()
+		{
+			if (pNext != nullptr)
+			{
+				delete pNext;
+				pNext = nullptr;
+			}
+		}
 		int Count();
 	public:
 		int val;
