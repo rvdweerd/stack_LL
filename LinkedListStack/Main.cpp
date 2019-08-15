@@ -8,7 +8,7 @@
 
 void test1()
 {
-	Stack s;
+	Stack2 s;
 	s.Push( 5 );
 	s.Push( 3 );
 	if( s.Pop() == 3 && s.Pop() == 5 && s.Empty() )
@@ -23,7 +23,7 @@ void test1()
 
 void test2()
 {
-	Stack s;
+	Stack2 s;
 	s.Push( 5 );
 	s.Push( 3 );
 	s.Push( 3 );
@@ -40,7 +40,7 @@ void test2()
 
 void test3()
 {
-	Stack s;
+	Stack2 s;
 	s.Push( 5 );
 	s.Push( 3 );
 	s.Pop();
@@ -63,7 +63,7 @@ void test3()
 
 void test4()
 {
-	Stack s;
+	Stack2 s;
 	s.Push( 5 );
 	s.Push( 3 );
 	s.Pop();
@@ -101,12 +101,12 @@ void test5()
 
 void test6()
 {
-	Stack s;
+	Stack2 s;
 	s.Push( 5 );
 	s.Push( 3 );
 
 	{
-		Stack s2 = s;
+		Stack2 s2 = s;
 		s2.Pop();
 	}
 
@@ -122,11 +122,11 @@ void test6()
 
 void test7()
 {
-	Stack s;
+	Stack2 s;
 	s.Push( 5 );
 	s.Push( 3 );
 
-	Stack s2;
+	Stack2 s2;
 	s2 = s;
 	s2.Pop();
 
@@ -142,12 +142,12 @@ void test7()
 
 void test8()
 {
-	Stack s;
+	Stack2 s;
 	s.Push( 5 );
 	s.Push( 3 );
 
 	{
-		Stack s2;
+		Stack2 s2;
 		s2 = s;
 		s2.Pop();
 	}
@@ -162,30 +162,51 @@ void test8()
 	}
 }
 
+void test9()
+{
+	Stack2 s;
+	s.Push(5);
+	s.Push(3);
+
+	Stack2 s2;
+	s2.Push(100);
+	s2.Push(101);
+	
+	s2 = s;
+	
+	if (s.Size() == 2 && s.Pop() == 3)
+	{
+		chili::print("    Test 9 passed!\n");
+	}
+	else
+	{
+		chili::print("*** Test 9 failed!\n");
+	}
+}
 
 int main()
 {
-	/*
+	
 	_CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_FILE);
 	_CrtSetReportFile(_CRT_WARN, _CRTDBG_FILE_STDERR);
 	_CrtSetReportMode(_CRT_ERROR, _CRTDBG_MODE_FILE);
 	_CrtSetReportFile(_CRT_ERROR, _CRTDBG_FILE_STDERR);
 	_CrtSetReportMode(_CRT_ASSERT, _CRTDBG_MODE_FILE);
 	_CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDERR);
-	*/
+	/*
 	
-	Stack2 s;
-	int count = 0;
-	s.Push(3);
-	count = s.Size();
-	s.Push(4);
-	count = s.Size();
-	s.Pop();
-	count = s.Size();
-	s.Pop();
-	count = s.Size();
+	{
+
+		Stack2 s;
+		s.Push(3);
+		s.Push(4);
+		Stack2 s2;
+		s2.Push(1);
+		s2 = s;
+	}
 
 	/*
+
 	Stack s2;
 	s2.Push(1);
 	s2 = s;
@@ -200,18 +221,20 @@ int main()
 	s2.Pop();
 	*/
 
-	/*
+	
 	test1();
 	test2();
 	test3();
 	test4();
 	test5();
+	
 	test6();
 	test7();
 	test8();
+	test9();
 
 	_CrtDumpMemoryLeaks();
-	*/
+	
 	
 	while( !_kbhit() );
 	return 0;

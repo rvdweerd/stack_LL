@@ -17,18 +17,19 @@ public:
 		int val;
 		Element* pNext;
 	};
-	Stack2()
-		:
-		pTop(nullptr)
-	{
-	}
+	Stack2();
+	Stack2(Element* ptr);
+	~Stack2();
+	Stack2(const Stack2& source);
+	Stack2& operator=(const Stack2& source);
+
 
 public:
 	void Push(int val);
 	int Pop();
-	int Size();
-	bool Empty();
-	void Print();
+	int Size() const;
+	bool Empty() const;
+	void Print() const;
 private:
 	Element* pTop;
 };
